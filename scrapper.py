@@ -66,6 +66,9 @@ def __get_filtros(
     cod_categoria: str,
     xt: str = None,
     xf: str = None,
+    xg: str = None,
+    xe: str = None,
+    xj: str = None,
     id_modelo: str = None,
     id_regiao: str = None,
     em_box: str = None,
@@ -73,7 +76,7 @@ def __get_filtros(
     preco_min: str = None,
     preco_max: str = None,
 ) -> dict:
-    uri = f"{base}/pesquisa/{categoria}/filtros?ClasseProdutoX={classe_produto}&CodCategoriaX={cod_categoria}&XT={xt}&XF={xf}&modelo={id_modelo}&regiao={id_regiao}&em_box={em_box}&cl={cod_loja}&preco_min={preco_min}&preco_max={preco_max}"
+    uri = f"{base}/pesquisa/{categoria}/filtros?ClasseProdutoX={classe_produto}&CodCategoriaX={cod_categoria}&XT={xt}&XF={xf}&XG={xg}&XE={xe}&XJ={xj}&modelo={id_modelo}&regiao={id_regiao}&em_box={em_box}&cl={cod_loja}&preco_min={preco_min}&preco_max={preco_max}"
     return post(uri).json()
 
 
@@ -84,6 +87,9 @@ def __find_lista_produtos(
     cod_categoria,
     xt,
     xf,
+    xg,
+    xe,
+    xj,
     id_modelo,
     id_regiao,
     em_box,
@@ -124,6 +130,9 @@ def __find_lista_produtos(
                 cod_categoria,
                 xt,
                 xf,
+                xg,
+                xe,
+                xj,
                 id_modelo,
                 id_regiao,
                 em_box,
@@ -154,6 +163,9 @@ def get_sub_page(
     page: int = 1,
     xt: str = "",
     xf: str = "",
+    xg: str = "",
+    xe: str = "",
+    xj: str = "",
     id_modelo: str = "",
     id_regiao: str = "",
     em_box: str = "",
@@ -161,7 +173,7 @@ def get_sub_page(
     preco_min: str = "",
     preco_max: str = "",
 ):
-    uri = f"{base}/pesquisa/{categoria}/precos?ClasseProdutoX={classe_produto}&CodCategoriaX={cod_categoria}&XT={xt}&XF={xf}&modelo={id_modelo}&regiao={id_regiao}&em_box={em_box}&cl={cod_loja}&preco_min={preco_min}&preco_max={preco_max}&curpage={page}"
+    uri = f"{base}/pesquisa/{categoria}/precos?ClasseProdutoX={classe_produto}&CodCategoriaX={cod_categoria}&XT={xt}&XF={xf}&XG={xg}&XE={xe}&XJ={xj}&modelo={id_modelo}&regiao={id_regiao}&em_box={em_box}&cl={cod_loja}&preco_min={preco_min}&preco_max={preco_max}&curpage={page}"
     page = get(uri)
 
     return __find_lista_produtos(
@@ -171,6 +183,9 @@ def get_sub_page(
         cod_categoria,
         xt,
         xf,
+        xg,
+        xe,
+        xj,
         id_modelo,
         id_regiao,
         em_box,

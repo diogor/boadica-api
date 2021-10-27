@@ -11,6 +11,9 @@ class ListParams(BaseModel):
     categoria: str
     xt: str = ""
     xf: str = ""
+    xg: str = ""
+    xe: str = ""
+    xj: str = ""
     page: int = 1
     id_modelo: str = ""
     id_regiao: str = ""
