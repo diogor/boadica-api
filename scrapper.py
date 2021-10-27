@@ -1,3 +1,4 @@
+import urllib
 from typing import Dict
 from requests import Response, get
 from bs4 import BeautifulSoup
@@ -19,7 +20,6 @@ def __find_links(page: Response) -> list:
             is_category = "precos?" not in a["href"]
             item = {
                 "label": a.text,
-                "link": a["href"],
                 "categoria": a["href"].split("/")[2],
             }
             if not is_category:
@@ -29,7 +29,7 @@ def __find_links(page: Response) -> list:
                     )[1]
                     for i in a["href"].split("?")[1].split("&")
                 }
-                item.update(**params)
+                item.update({"link": urllib.parse.urlencode(params)})
             lista.append(item)
 
     return lista
