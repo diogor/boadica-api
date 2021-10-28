@@ -102,17 +102,28 @@ def __find_lista_produtos(
     rows = soup.find_all("div", class_="detalhe")
     pagination = soup.find("div", class_="paginacao").find("p").text.strip().split(" ")
     produtos = []
+
+    def __get_or_none(detalhes, index):
+        try:
+            return detalhes[index].text.strip()
+        except IndexError:
+            return ""
+
     for p in rows:
         data = {}
 
         elements = {
-            "nome": p.find("div", class_="produto").find("a").find("span"),
+            "nome": p.find("div", class_="produto").find("a").find_all("span")[0],
+            "embalagem": __get_or_none(
+                p.find("div", class_="produto").find("a").find_all("span"), 1
+            ),
             "descricao": p.find("div", class_="especificacao"),
             "preco": p.find("div", class_="preco"),
             "telefone": p.find("span", {"title": "Telefone"}),
             "whatsapp": p.find("div", {"title": "WhatsApp"}),
             "lojaNome": p.find("a", class_="modal-loja-dotnet"),
             "lojaId": p.find("a", class_="modal-loja-dotnet")["data-codigo"],
+            "endereco": p.find("div", class_="popup-loja-mobile"),
         }
 
         for k, v in elements.items():
