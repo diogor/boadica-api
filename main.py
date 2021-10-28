@@ -22,8 +22,8 @@ app.add_middleware(
 
 class ListParams(BaseModel):
     classe_produto: str
-    cod_categoria: str
     categoria: str
+    cod_categoria: str = ""
     xt: str = ""
     xf: str = ""
     xg: str = ""
