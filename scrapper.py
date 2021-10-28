@@ -123,13 +123,15 @@ def __find_lista_produtos(
             "whatsapp": p.find("div", {"title": "WhatsApp"}),
             "lojaNome": p.find("a", class_="modal-loja-dotnet"),
             "lojaId": p.find("a", class_="modal-loja-dotnet")["data-codigo"],
-            "endereco": p.find("div", class_="popup-loja-mobile"),
+            "endereco": p.find("div", class_="popup-loja-mobile").text.split("\n"),
         }
 
         for k, v in elements.items():
             if v:
                 if isinstance(v, str):
                     data.update({k: v.strip()})
+                elif isinstance(v, list):
+                    data.update({k: [s.strip() for s in v if s.strip()]})
                 else:
                     data.update({k: v.text.strip()})
 
