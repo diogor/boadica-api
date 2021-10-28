@@ -106,8 +106,8 @@ def __find_lista_produtos(
         data = {}
 
         elements = {
-            "nome": p.find("div", class_="no-mobile"),
-            "descricao": p.find("div", class_="produto").find("a").find("span"),
+            "nome": p.find("div", class_="produto").find("a").find("span"),
+            "descricao": p.find("div", class_="especificacao"),
             "preco": p.find("div", class_="preco"),
             "telefone": p.find("span", {"title": "Telefone"}),
             "whatsapp": p.find("div", {"title": "WhatsApp"}),
