@@ -100,8 +100,6 @@ def __find_lista_produtos(
 ) -> list:
     soup = BeautifulSoup(page.text, "html.parser")
     rows = soup.find_all("div", class_="detalhe")
-    if not rows:
-        return {}
     pagination = soup.find("div", class_="paginacao").find("p").text.strip().split(" ")
     produtos = []
 
