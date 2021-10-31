@@ -98,9 +98,13 @@ def __find_lista_produtos(
     preco_min,
     preco_max,
 ) -> list:
+    pagination = [0, 0, 0, 0]
     soup = BeautifulSoup(page.text, "html.parser")
     rows = soup.find_all("div", class_="detalhe")
-    pagination = soup.find("div", class_="paginacao").find("p").text.strip().split(" ")
+    if rows:
+        pagination = (
+            soup.find("div", class_="paginacao").find("p").text.strip().split(" ")
+        )
     produtos = []
 
     def __get_or_none(detalhes, index):
