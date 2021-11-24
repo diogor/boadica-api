@@ -122,6 +122,7 @@ def __find_lista_produtos(
                 p.find("div", class_="produto").find("a").find_all("span"), 1
             ),
             "descricao": p.find("div", class_="especificacao"),
+            "imagem": p.find("a", class_="modal-foto").get("data-href", None),
             "preco": p.find("div", class_="preco"),
             "telefone": p.find("span", {"title": "Telefone"}),
             "whatsapp": p.find("div", {"title": "WhatsApp"}),
