@@ -113,6 +113,11 @@ def __find_lista_produtos(
         except IndexError:
             return ""
 
+    def __get_image(element):
+        if element:
+            return element.get("data-href", None)
+        return None
+
     for p in rows:
         data = {}
 
@@ -122,7 +127,7 @@ def __find_lista_produtos(
                 p.find("div", class_="produto").find("a").find_all("span"), 1
             ),
             "descricao": p.find("div", class_="especificacao"),
-            "imagem": p.find("a", class_="modal-foto").get("data-href", None),
+            "imagem": __get_image(p.find("a", class_="modal-foto")),
             "preco": p.find("div", class_="preco"),
             "telefone": p.find("span", {"title": "Telefone"}),
             "whatsapp": p.find("div", {"title": "WhatsApp"}),
