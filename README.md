@@ -4,4 +4,4 @@
 ## Inicialização
 - ```poetry run uvicorn main:app```
 ## Documentação
-- Acesse 
+- Acesse ```/docs```
