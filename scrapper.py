@@ -30,7 +30,7 @@ def __find_links(page: Response) -> list:
                     for i in a["href"].split("?")[1].split("&")
                 }
                 params.update({"categoria": item["categoria"]})
-                item.update({"link": urllib.parse.urlencode(params)})
+                item.update({"params": params})
             lista.append(item)
 
     return lista
